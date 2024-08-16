@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Panel Form</title>
+    <link rel="stylesheet" href="../tools/create-live-copy/css/style.css">
+</head>
+<body>
+<div class="side-panel">
+    <form id="liveCopyForm" method="post" action="http://localhost:8080/api/submitForm">
+        <h2>Create Live Copy</h2>
+        <label for="Blueprint-path">Blueprint Path:</label>
+        <input type="text" id="Blueprint-path" name="Blueprint-path" required>
+
+        <label for="Destination-path">Destination Path:</label>
+        <input type="text" id="Destination-path" name="Destination-path" required>
+
+        <label for="LiveCopy-Name">LiveCopy Name:</label>
+        <input type="text" id="LiveCopy-Name" name="LiveCopy-Name" required>
+
+        <button type="submit">Submit</button>
+    </form>
+    <div id="responseContainer"></div>
+</div>
+
+</body>
+</html>

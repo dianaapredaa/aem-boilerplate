@@ -57,7 +57,7 @@ This project uses a structured commit changelog format that should be used for e
 # either add all changed files
 $ git add -A
 # or selectively add files
-$ git add package.json
+$ git add config.json
 # then commit using the wizard
 $ npm run commit
 ```
