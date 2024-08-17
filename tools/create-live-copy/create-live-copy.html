@@ -10,14 +10,17 @@
 <div class="side-panel">
     <form id="liveCopyForm" method="post" action="http://localhost:8080/api/submitForm">
         <h2>Create Live Copy</h2>
+        <label for="Title">Title:</label>
+        <input type="text" id="Title" name="Title" required>
+
+        <label for="LiveCopy-Name">LiveCopy Name:</label>
+        <input type="text" id="LiveCopy-Name" name="LiveCopy-Name" required>
+
         <label for="Blueprint-path">Blueprint Path:</label>
         <input type="text" id="Blueprint-path" name="Blueprint-path" required>
 
         <label for="Destination-path">Destination Path:</label>
         <input type="text" id="Destination-path" name="Destination-path" required>
-
-        <label for="LiveCopy-Name">LiveCopy Name:</label>
-        <input type="text" id="LiveCopy-Name" name="LiveCopy-Name" required>
 
         <button type="submit">Submit</button>
     </form>
