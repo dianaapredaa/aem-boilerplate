@@ -10,6 +10,9 @@ module.exports = {
     sourceType: 'module',
     requireConfigFile: false,
   },
+  globals: {
+    _spPageContextInfo: 'readonly', // Inform ESLint that _spPageContextInfo is a global variable
+  },
   rules: {
     'import/extensions': ['error', { js: 'always' }], // require js file extensions in imports
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
