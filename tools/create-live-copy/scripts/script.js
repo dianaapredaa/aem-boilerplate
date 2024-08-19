@@ -8,17 +8,12 @@ document.getElementById('liveCopyForm').addEventListener('submit', function (eve
   }).then((response) => {
     if (response.ok) {
       this.reset(); // Resets the form
-      // Display success message in the UI
-      const successMessage = document.getElementById('successMessage');
-      if (successMessage) {
-        successMessage.textContent = 'Form submitted successfully!';
-      }
     }
-  }).catch(() => {
-    // Handle the error appropriately
-    const errorMessage = document.getElementById('errorMessage');
-    if (errorMessage) {
-      errorMessage.textContent = 'An error occurred while submitting the form. Please try again.';
-    }
-  });
+    // eslint-disable-next-line no-console
+  }).catch((error) => console.error('Error:', error));
+
+  // Form submitted successfully
+  // eslint-disable-next-line no-alert
+  alert('Form submitted successfully!');
+  this.reset(); // Reset the form
 });
