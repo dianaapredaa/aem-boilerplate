@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Side Panel Form</title>
     <link rel="stylesheet" href="../create-live-copy/css/style.css">
+    <script src="../create-live-copy/scripts/script.js" defer></script>
 </head>
 <body>
 <div class="side-panel">
-    <form id="liveCopyForm" method="post" action="http://localhost:8080/api/submitForm">
+    <form id="liveCopyForm">
         <h2>Create Live Copy</h2>
         <label for="Title">Title:</label>
         <input type="text" id="Title" name="Title" required>
@@ -24,7 +25,6 @@
 
         <button type="submit">Submit</button>
     </form>
-    <div id="responseContainer"></div>
 </div>
 
 </body>
