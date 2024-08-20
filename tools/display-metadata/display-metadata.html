@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Panel Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/scripts/script.js" defer></script>
+</head>
+<body>
+<div class="side-panel">
+    <form id="metadata-form">
+        <h2>Display Metadata</h2>
+
+        <!-- Initial input for file path -->
+        <label for="filePath">File Path:</label>
+        <input type="text" id="filePath" name="filePath" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Metadata fields that will be displayed after submission -->
+    <div id="metadata-display" style="display: none;">
+        <h3>Metadata Details</h3>
+        <p><strong>Name:</strong> <span id="name"></span></p>
+        <p><strong>ID:</strong> <span id="id"></span></p>
+        <p><strong>Created By:</strong> <span id="createdBy"></span></p>
+        <p><strong>Created DateTime:</strong> <span id="createdDateTime"></span></p>
+        <p><strong>Last Modified By:</strong> <span id="lastModifiedBy"></span></p>
+        <p><strong>Last Modified DateTime:</strong> <span id="lastModifiedDateTime"></span></p>
+    </div>
+
+    <!-- Error message -->
+    <div id="errorMessage"></div>
+</div>
+</body>
+</html>
