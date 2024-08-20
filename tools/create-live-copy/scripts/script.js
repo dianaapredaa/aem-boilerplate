@@ -11,5 +11,8 @@ document.getElementById('liveCopyForm').addEventListener('submit', function (eve
     }
     // eslint-disable-next-line no-console
   }).catch((error) => console.error('Error:', error));
+
+  // eslint-disable-next-line no-alert
+  alert('Form submitted successfully!');
   this.reset(); // Reset the form
 });
