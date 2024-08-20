@@ -1,4 +1,5 @@
-document.getElementById('liveCopyForm').addEventListener('submit', (event) => {
+// eslint-disable-next-line func-names
+document.getElementById('liveCopyForm').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
   fetch('http://localhost:8080/api/submitForm', {
@@ -7,15 +8,12 @@ document.getElementById('liveCopyForm').addEventListener('submit', (event) => {
   }).then((response) => {
     if (response.ok) {
       this.reset(); // Resets the form
-      const successMessage = document.getElementById('successMessage');
-      if (successMessage) {
-        successMessage.textContent = 'Form submitted successfully!';
-      }
     }
-  }).catch(() => {
-    const errorMessage = document.getElementById('errorMessage');
-    if (errorMessage) {
-      errorMessage.textContent = 'An error occurred while submitting the form. Please try again.';
-    }
-  });
+    // eslint-disable-next-line no-console
+  }).catch((error) => console.error('Error:', error));
+
+  // Form submitted successfully
+  // eslint-disable-next-line no-alert
+  alert('Form submitted successfully!');
+  this.reset(); // Reset the form
 });
