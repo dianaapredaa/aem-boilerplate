@@ -10,10 +10,10 @@ document.getElementById('liveCopyForm').addEventListener('submit', function (eve
       this.reset(); // Resets the form
     }
     // eslint-disable-next-line no-console
-  }).catch((error) => console.error('Error:', error));
-
-  // Form submitted successfully
-  // eslint-disable-next-line no-alert
-  alert('Form submitted successfully!');
-  this.reset(); // Reset the form
+  }).catch(() => {
+    const errorMessage = document.getElementById('errorMessage');
+    if (errorMessage) {
+      errorMessage.textContent = 'An error occurred while submitting the form. Please try again.';
+    }
+  });
 });
