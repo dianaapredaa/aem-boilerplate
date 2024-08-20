@@ -20,11 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then((data) => {
           // Check if 'data' has the expected properties
           document.getElementById('name').textContent = data.name || 'N/A';
+          document.getElementById('path').textContent = data.path || 'N/A';
           document.getElementById('id').textContent = data.id || 'N/A';
           document.getElementById('createdBy').textContent = data.createdBy || 'N/A';
           document.getElementById('createdDateTime').textContent = data.createdDateTime || 'N/A';
           document.getElementById('lastModifiedBy').textContent = data.lastModifiedBy || 'N/A';
           document.getElementById('lastModifiedDateTime').textContent = data.lastModifiedDateTime || 'N/A';
+          document.getElementById('liveCopies').textContent = data.liveCopies || 'N/A';
+          document.getElementById('blueprint').textContent = data.blueprint || 'N/A';
 
           form.style.display = 'none'; // Hide the form
           metadataDisplay.style.display = 'block'; // Show the metadata details
