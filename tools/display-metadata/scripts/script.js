@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json(); // Parse the JSON from the response
           }
           throw new Error('Network response was not ok.');
-        }).then((data) => {
+        })
+        .then((data) => {
           // Check if 'data' has the expected properties
           document.getElementById('name').textContent = data.name || 'N/A';
           document.getElementById('id').textContent = data.id || 'N/A';
@@ -29,8 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
           form.style.display = 'none'; // Hide the form
           metadataDisplay.style.display = 'block'; // Show the metadata details
           errorMessage.textContent = ''; // Clear any previous error message
-          // eslint-disable-next-line no-console
-        }).catch((error) => console.error('Error:', error));
+        })
+        .catch((error) => {
+          if (errorMessage) {
+            errorMessage.textContent = 'An error occurred while submitting the form. Please try again.';
+          }
+          console.error('Error:', error);
+        });
     });
+  } else {
+    console.error('Form with ID "metadata-form" not found.');
   }
 });
