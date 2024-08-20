@@ -5,7 +5,7 @@
       "id": "create-live-copy",
       "title": "Create Live Copy",
       "environments": [
-        ""
+        "any"
       ],
       "url": "/tools/create-live-copy/create-live-copy.html",
       "isPalette": true,
