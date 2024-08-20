@@ -10,10 +10,6 @@ document.getElementById('liveCopyForm').addEventListener('submit', function (eve
       this.reset(); // Resets the form
     }
     // eslint-disable-next-line no-console
-  }).catch(() => {
-    const errorMessage = document.getElementById('errorMessage');
-    if (errorMessage) {
-      errorMessage.textContent = 'An error occurred while submitting the form. Please try again.';
-    }
-  });
+  }).catch((error) => console.error('Error:', error));
+  this.reset(); // Reset the form
 });
