@@ -1,5 +1,6 @@
-document.getElementById('liveCopyForm').addEventListener('submit', (event) => {
-  event.preventDefault();
+// eslint-disable-next-line func-names
+document.getElementById('liveCopyForm').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevents the default form submission
 
   fetch('http://localhost:8080/api/submitForm', {
     method: 'POST',
