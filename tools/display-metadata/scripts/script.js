@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', function (event) {
       event.preventDefault(); // Prevents the default form submission
 
-      fetch('http://localhost:8080/api/metadata', {
+      fetch('http://localhost:8080/api/display-metadata', {
         method: 'POST',
         body: new FormData(this),
       })
