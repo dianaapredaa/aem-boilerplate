@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Add click listeners to get the path of the selected item
   document.querySelectorAll('div[role="row"]').forEach((row) => {
+    console.log('test');
     row.addEventListener('click', () => {
       // Get the path of the selected item
       // Set the path to the filePath input field
