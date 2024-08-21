@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('filePath').value = row.querySelector('div[role="cell"]').textContent;
       // print the path to the console
       // eslint-disable-next-line no-console
-      console.log(row.querySelector('div[role="cell"]').textContent);
+      console.log(`Path: ${row.querySelector('div[role="cell"]').textContent}`);
     });
   });
   const form = document.getElementById('metadata-form');
