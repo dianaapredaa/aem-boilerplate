@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Add click listeners to get the path of the selected item
+  document.querySelectorAll('div[role="row"]').forEach((row) => {
+    row.addEventListener('click', () => {
+      // Get the path of the selected item
+      // Set the path to the filePath input field
+      document.getElementById('filePath').value = row.querySelector('div[role="cell"]').textContent;
+      // print the path to the console
+      // eslint-disable-next-line no-console
+      console.log(row.querySelector('div[role="cell"]').textContent);
+    });
+  });
   const form = document.getElementById('metadata-form');
   const metadataDisplay = document.getElementById('metadata-display');
   const errorMessage = document.getElementById('errorMessage');

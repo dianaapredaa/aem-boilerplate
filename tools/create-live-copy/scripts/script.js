@@ -8,6 +8,9 @@ document.getElementById('liveCopyForm').addEventListener('submit', function (eve
   }).then((response) => {
     if (response.ok) {
       this.reset(); // Resets the form
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Form submission failed!');
     }
     // eslint-disable-next-line no-console
   }).catch((error) => console.error('Error:', error));
