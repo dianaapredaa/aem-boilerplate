@@ -13,7 +13,7 @@
       "environments": [
         "any"
       ],
-      "url": "/tools/live-copy/create-live-copy.html",
+      "url": "/tools/create-live-copy/create-live-copy.html",
       "isPalette": true,
       "passConfig": true,
       "passReferer": true,
@@ -26,7 +26,7 @@
       "environments": [
         "any"
       ],
-      "url": "/tools/live-copy/delete-live-copy.html",
+      "url": "/tools/delete-live-copy/delete-live-copy.html",
       "isPalette": true,
       "passConfig": true,
       "passReferer": true,
