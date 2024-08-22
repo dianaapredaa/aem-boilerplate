@@ -13,7 +13,20 @@
       "environments": [
         "any"
       ],
-      "url": "/tools/create-live-copy/create-live-copy.html",
+      "url": "/tools/live-copy/create-live-copy.html",
+      "isPalette": true,
+      "passConfig": true,
+      "passReferer": true,
+      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
+    },
+    {
+      "containerId": "live-copy",
+      "id": "delete-live-copy",
+      "title": "Delete Live Copy",
+      "environments": [
+        "any"
+      ],
+      "url": "/tools/live-copy/delete-live-copy.html",
       "isPalette": true,
       "passConfig": true,
       "passReferer": true,
