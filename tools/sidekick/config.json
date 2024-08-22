@@ -2,6 +2,12 @@
   "project": "Edge Delivery Services",
   "plugins": [
     {
+      "id": "live-copy",
+      "title": "Live Copy",
+      "isContainer": true
+    },
+    {
+      "ContainerId": "live-copy",
       "id": "create-live-copy",
       "title": "Create Live Copy",
       "environments": [
