@@ -3,6 +3,7 @@ document.getElementById('rollout').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
   fetch('http://localhost:8080/api/rollout', {
+    method: 'POST',
     body: new FormData(this),
   }).then((response) => {
     if (response.ok) {
