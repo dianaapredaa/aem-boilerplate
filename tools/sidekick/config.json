@@ -7,7 +7,7 @@
       "isContainer": true
     },
     {
-      "ContainerId": "live-copy",
+      "containerId": "live-copy",
       "id": "create-live-copy",
       "title": "Create Live Copy",
       "environments": [
