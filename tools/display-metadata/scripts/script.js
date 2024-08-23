@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
           errorMessage.textContent = ''; // Clear any previous error message
           // eslint-disable-next-line no-console
         }).catch((error) => console.error('Error:', error));
+
+      // eslint-disable-next-line no-alert
+      alert('Form submitted successfully!');
     });
   }
 });
