@@ -16,6 +16,6 @@ document.getElementById('delete-live-copy').addEventListener('submit', function 
   }).catch((error) => console.error('Error:', error));
 
   // eslint-disable-next-line no-alert
-  alert('Form submitted successfully!');
+  alert('Deleting Live Copy!');
   this.reset(); // Reset the form
 });

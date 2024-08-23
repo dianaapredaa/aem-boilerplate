@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch((error) => console.error('Error:', error));
 
       // eslint-disable-next-line no-alert
-      alert('Form submitted successfully!');
+      alert('Looking for Metadata!');
     });
   }
 });

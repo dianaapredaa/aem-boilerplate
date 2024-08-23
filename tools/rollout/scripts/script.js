@@ -16,6 +16,6 @@ document.getElementById('rollout').addEventListener('submit', function (event) {
   }).catch((error) => console.error('Error:', error));
 
   // eslint-disable-next-line no-alert
-  alert('Form submitted successfully!');
+  alert('Rollout started!');
   this.reset(); // Reset the form
 });
