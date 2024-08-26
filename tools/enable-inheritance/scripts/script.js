@@ -1,5 +1,5 @@
 // eslint-disable-next-line func-names
-document.getElementById('create-live-copy').addEventListener('submit', function (event) {
+document.getElementById('enable-inheritance').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
   fetch('http://localhost:8080/api/enable-inheritance', {
