@@ -52,7 +52,7 @@
       "environments": [
         "any"
       ],
-      "url": "/tools/rollout/enable-inheritance.html",
+      "url": "/tools/enable-inheritance/enable-inheritance.html",
       "isPalette": true,
       "passConfig": true,
       "passReferer": true,
@@ -65,7 +65,7 @@
       "environments": [
         "any"
       ],
-      "url": "/tools/rollout/cancel-inheritance.html",
+      "url": "/tools/cancel-inheritance/cancel-inheritance.html",
       "isPalette": true,
       "passConfig": true,
       "passReferer": true,
