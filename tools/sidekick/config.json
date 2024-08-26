@@ -46,6 +46,32 @@
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     },
     {
+      "containerId": "live-copy",
+      "id": "enable-inheritance",
+      "title": "Enable Inheritance",
+      "environments": [
+        "any"
+      ],
+      "url": "/tools/rollout/enable-inheritance.html",
+      "isPalette": true,
+      "passConfig": true,
+      "passReferer": true,
+      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
+    },
+    {
+      "containerId": "live-copy",
+      "id": "cancel-inheritance",
+      "title": "Cancel Inheritance",
+      "environments": [
+        "any"
+      ],
+      "url": "/tools/rollout/cancel-inheritance.html",
+      "isPalette": true,
+      "passConfig": true,
+      "passReferer": true,
+      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
+    },
+    {
       "id": "display-metadata",
       "title": "Display Metadata",
       "environments": [
