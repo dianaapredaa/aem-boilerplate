@@ -2,7 +2,8 @@
 document.getElementById('file-input').addEventListener('change', function () {
   const file = this.files[0];
   if (file) {
-    document.getElementById('Blueprint-path').value = URL.createObjectURL(file);
+    // eslint-disable-next-line no-alert
+    alert(`File selected: ${file.name}`);
   }
 });
 
