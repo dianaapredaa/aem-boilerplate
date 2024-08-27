@@ -1,9 +1,13 @@
 // eslint-disable-next-line func-names
+document.getElementById('Blueprint-path').addEventListener('change', function () {
+  const filePath = this.value;
+  if (filePath) {
+    document.getElementById('Blueprint-path').value = filePath;
+  }
+});
+// eslint-disable-next-line func-names
 document.getElementById('create-live-copy').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
-
-  // set Blueprint as pageUrl
-  document.getElementById('Blueprint-path').value = window.location.href;
 
   fetch('http://localhost:8080/api/create-live-copy', {
     method: 'POST',
