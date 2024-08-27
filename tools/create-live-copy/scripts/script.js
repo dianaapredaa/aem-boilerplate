@@ -2,6 +2,9 @@
 document.getElementById('create-live-copy').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
+  // set Blueprint as pageUrl
+  document.getElementById('Blueprint-path').value = window.location.href;
+
   fetch('http://localhost:8080/api/create-live-copy', {
     method: 'POST',
     body: new FormData(this),
