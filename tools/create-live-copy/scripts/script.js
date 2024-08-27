@@ -1,13 +1,4 @@
 // eslint-disable-next-line func-names
-document.getElementById('file-input').addEventListener('change', function () {
-  document.getElementById('create-live-copy');
-  if (this.files.length === 0) {
-    console.log('No file selected.');
-  } else {
-    console.log('File selected:', this.files[0].name);
-  }
-});
-// eslint-disable-next-line func-names
 document.getElementById('create-live-copy').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
