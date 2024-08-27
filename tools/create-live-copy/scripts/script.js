@@ -1,5 +1,5 @@
 // eslint-disable-next-line func-names
-document.getElementById('Blueprint-path').addEventListener('change', function () {
+document.getElementById('file-input').addEventListener('change', function () {
   const file = this.files[0];
   if (file) {
     document.getElementById('Blueprint-path').value = URL.createObjectURL(file);
