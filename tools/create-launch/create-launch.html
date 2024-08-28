@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side Panel Form</title>
+  <link rel="stylesheet" href="../create-live-copy/css/style.css">
+  <script src="../create-launch/scripts/script.js" defer></script>
+</head>
+<body>
+<div class="side-panel">
+  <form id="create-launch">
+    <h2>Create Launch</h2>
+
+    <label for="Launch-Name">Launch name:</label>
+    <input type="text" id="Launch-Name" name="Launch-Name" required>
+
+    <label for="Source-path">Source path:</label>
+    <input type="text" id="Source-path" name="Source-path" required>
+
+    <div class="checkbox-container">
+      <input type="checkbox" id="Inheritance" name="Inheritance">
+      <label for="Inheritance">Inherit Source Page Live Data</label>
+    </div>
+
+<!--    <label for="launchDate">Launch Date:</label>-->
+<!--    <input type="date" id="launchDate" name="launchDate" required>-->
+
+    <button type="submit">Create Launch</button>
+  </form>
+  <!-- Error message -->
+  <div id="errorMessage"></div>
+</div>
+</body>
+</html>

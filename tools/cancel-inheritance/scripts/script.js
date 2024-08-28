@@ -2,7 +2,7 @@
 document.getElementById('cancel-inheritance').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('http://localhost:8080/api/cancel-inheritance', {
+  fetch('http://localhost:8080/sharepoint/cancel-inheritance', {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {
@@ -16,6 +16,6 @@ document.getElementById('cancel-inheritance').addEventListener('submit', functio
   }).catch((error) => console.error('Error:', error));
 
   // eslint-disable-next-line no-alert
-  alert('Canceling Inheritance!');
+  alert('Creating Launch!');
   this.reset(); // Reset the form
 });

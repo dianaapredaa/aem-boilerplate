@@ -2,7 +2,7 @@
 document.getElementById('create-live-copy').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('http://localhost:8080/api/create-live-copy', {
+  fetch('http://localhost:8080/sharepoint/create-live-copy', {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {

@@ -1,8 +1,8 @@
 // eslint-disable-next-line func-names
-document.getElementById('enable-inheritance').addEventListener('submit', function (event) {
+document.getElementById('create-launch').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('http://localhost:8080/sharepoint/enable-inheritance', {
+  fetch('http://localhost:8080/sharepoint/create-launch', {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {
@@ -16,6 +16,6 @@ document.getElementById('enable-inheritance').addEventListener('submit', functio
   }).catch((error) => console.error('Error:', error));
 
   // eslint-disable-next-line no-alert
-  alert('Enabling Inheritance!');
+  alert('Creating Launch!');
   this.reset(); // Reset the form
 });
