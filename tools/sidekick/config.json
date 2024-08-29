@@ -2,12 +2,12 @@
   "project": "Edge Delivery Services",
   "plugins": [
     {
-      "id": "live-copy",
-      "title": "Live Copy",
+      "id": "MSM",
+      "title": "MSM",
       "isContainer": true
     },
     {
-      "containerId": "live-copy",
+      "containerId": "MSM",
       "id": "create-live-copy",
       "title": "Create Live Copy",
       "environments": [
@@ -20,7 +20,7 @@
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     },
     {
-      "containerId": "live-copy",
+      "containerId": "MSM",
       "id": "delete-live-copy",
       "title": "Delete Live Copy",
       "environments": [
@@ -33,7 +33,7 @@
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     },
     {
-      "containerId": "live-copy",
+      "containerId": "MSM",
       "id": "rollout",
       "title": "Rollout",
       "environments": [
@@ -46,7 +46,7 @@
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     },
     {
-      "containerId": "live-copy",
+      "containerId": "MSM",
       "id": "enable-inheritance",
       "title": "Enable Inheritance",
       "environments": [
@@ -59,7 +59,7 @@
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     },
     {
-      "containerId": "live-copy",
+      "containerId": "MSM",
       "id": "cancel-inheritance",
       "title": "Cancel Inheritance",
       "environments": [
@@ -82,6 +82,37 @@
       "passConfig": true,
       "passReferer": true,
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:800px; height: calc(100vh - 60px)"
+    },
+    {
+      "id": "Launches",
+      "title": "Launches",
+      "isContainer": true
+    },
+    {
+      "containerId": "Launches",
+      "id": "create-launch",
+      "title": "Create Launch",
+      "environments": [
+        "any"
+      ],
+      "url": "/tools/create-launch/create-launch.html",
+      "isPalette": true,
+      "passConfig": true,
+      "passReferer": true,
+      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
+    },
+    {
+      "containerId": "Launches",
+      "id": "promote-launch",
+      "title": "Promote Launch",
+      "environments": [
+        "any"
+      ],
+      "url": "/tools/promote-launch/promote-launch.html",
+      "isPalette": true,
+      "passConfig": true,
+      "passReferer": true,
+      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     }
   ]
 }
