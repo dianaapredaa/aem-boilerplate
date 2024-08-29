@@ -72,6 +72,11 @@
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     },
     {
+      "id": "Launches",
+      "title": "Launches",
+      "isContainer": true
+    },
+    {
       "containerId": "Launches",
       "id": "create-launch",
       "title": "Create Launch",
@@ -108,11 +113,6 @@
       "passConfig": true,
       "passReferer": true,
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:800px; height: calc(100vh - 60px)"
-    },
-    {
-      "id": "Launches",
-      "title": "Launches",
-      "isContainer": true
     }
   ]
 }
