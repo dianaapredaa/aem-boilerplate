@@ -39,4 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Looking for Metadata!');
     });
   }
+
+  const resetButton = document.getElementById('reset-button');
+  if (resetButton) {
+    resetButton.addEventListener('click', () => {
+      form.style.display = 'block'; // Show the form
+      metadataDisplay.style.display = 'none'; // Hide the metadata details
+    });
+  }
 });
