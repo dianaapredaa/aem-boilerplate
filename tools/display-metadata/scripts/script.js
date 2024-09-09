@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('lastModifiedDateTime').textContent = data.lastModifiedDateTime || 'N/A';
           document.getElementById('liveCopies').textContent = data.liveCopies || 'N/A';
           document.getElementById('blueprint').textContent = data.blueprint || 'N/A';
-          document.getElementById('launch').textContent = data.launch || 'N/A';
+          document.getElementById('launches').textContent = data.launches || 'N/A';
 
           form.style.display = 'none'; // Hide the form
           metadataDisplay.style.display = 'block'; // Show the metadata details
