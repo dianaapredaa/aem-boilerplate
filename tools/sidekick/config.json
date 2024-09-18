@@ -103,6 +103,19 @@
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
     },
     {
+      "containerId": "Launches",
+      "id": "sync-launch",
+      "title": "Sync Launch",
+      "environments": [
+        "any"
+      ],
+      "url": "/tools/sync-launch/sync-launch.html",
+      "isPalette": true,
+      "passConfig": true,
+      "passReferer": true,
+      "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:400px; height: calc(100vh - 60px)"
+    },
+    {
       "id": "display-metadata",
       "title": "Display Metadata",
       "environments": [
