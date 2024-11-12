@@ -2,7 +2,7 @@
 document.getElementById('rollout').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('http://localhost:8080/sharepoint/rollout', {
+  fetch('https://aem-sites-reverie-msm-launches-eds-deploy-ethos12-416093.stage.cloud.adobe.io/sharepoint/rollout', {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {

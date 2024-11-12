@@ -2,7 +2,7 @@
 document.getElementById('delete-live-copy').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('http://localhost:8080/sharepoint/delete-live-copy', {
+  fetch('https://aem-sites-reverie-msm-launches-eds-deploy-ethos12-416093.stage.cloud.adobe.io/liveCopies/sharepoint/delete-live-copy', {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {
