@@ -2,7 +2,7 @@
 document.getElementById('create-launch').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('https://aem-sites-reverie-msm-launches-eds-deploy-ethos12-416093.stage.cloud.adobe.io/launches/sharepoint/create-launch', {
+  fetch('https://aem-sites-reverie-msm-launches-eds-deploy-ethos12-416093.stage.cloud.adobe.io/liveCopies/sharepoint/create-launch', {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {
