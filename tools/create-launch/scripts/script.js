@@ -2,7 +2,7 @@
 document.getElementById('create-launch').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('https://localhost:8080/sharepoint/create-launch', {
+  fetch('http://localhost:8080/sharepoint/create-launch', {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {
