@@ -1,4 +1,3 @@
-// eslint-disable-next-line func-names
 document.getElementById('create-live-copy').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
@@ -8,14 +7,16 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
   }).then((response) => {
     if (response.ok) {
       this.reset(); // Resets the form
+      alert('Live copy created successfully!');
+    } else if (response.status === 404) {
+      alert('Error: Resource not found!');
     } else {
-      // eslint-disable-next-line no-alert
       alert('Form submission failed!');
     }
-    // eslint-disable-next-line no-console
-  }).catch((error) => console.error('Error:', error));
+  }).catch((error) => {
+    console.error('Error:', error);
+    alert('Error: Fetch failed!');
+  });
 
-  // eslint-disable-next-line no-alert
   alert('Creating Live Copy!');
-  this.reset(); // Reset the form
 });
