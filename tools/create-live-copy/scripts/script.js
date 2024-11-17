@@ -10,19 +10,14 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
   }).then((response) => {
     if (response.ok) {
       form.reset(); // Resets the form
-      // eslint-disable-next-line no-alert
       alert('Live copy created successfully!');
     } else if (response.status === 404) {
-      // eslint-disable-next-line no-alert
       alert('Error: Resource not found!');
     } else {
-      // eslint-disable-next-line no-alert
       alert('Form submission failed!');
     }
-    // eslint-disable-next-line no-console
-  }).catch((error) => console.error('Error:', error));
-
-  // eslint-disable-next-line no-alert
-  alert('Creating Live Copy!');
-  // this.reset(); // Reset the form
+  }).catch((error) => {
+    console.error('Error:', error);
+    alert('Error: Fetch failed!');
+  });
 });
