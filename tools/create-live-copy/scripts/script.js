@@ -8,7 +8,7 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
     method: 'POST',
     body: new FormData(form),
   }).then((response) => {
-    if (response.ok) {
+    if (response.status === 202) {
       form.reset(); // Resets the form
       alert('Live copy created successfully!');
     } else if (response.status === 404) {
