@@ -2,23 +2,20 @@
 document.getElementById('create-live-copy').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  const form = this; // Store reference to the form element
-
   fetch('https://aem-sites-reverie-msm-launches-eds-deploy-ethos12-416093.stage.cloud.adobe.io/sharepoint/create-live-copy', {
     method: 'POST',
-    body: new FormData(form),
+    body: new FormData(this),
   }).then((response) => {
-    if (response.status === 202) {
-      form.reset(); // Resets the form
-      // eslint-disable-next-line no-alert
-      alert('Live copy created successfully!');
-    } else if (response.status === 404) {
-      // eslint-disable-next-line no-alert
-      alert('Error: Resource not found!');
+    if (response.ok) {
+      this.reset(); // Resets the form
     } else {
       // eslint-disable-next-line no-alert
-      alert('Form submission failed!');
+      alert('Error: Resource not found!');
     }
     // eslint-disable-next-line no-console
   }).catch((error) => console.error('Error:', error));
+
+  // eslint-disable-next-line no-alert
+  alert('Creating Live Copy!');
+  this.reset(); // Reset the form
 });
