@@ -16,8 +16,6 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
     } else {
       alert('Form submission failed!');
     }
-  }).catch((error) => {
-    console.error('Error:', error);
-    alert('Error: Fetch failed!');
-  });
+    // eslint-disable-next-line no-console
+  }).catch((error) => console.error('Error:', error));
 });
