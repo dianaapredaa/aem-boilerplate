@@ -10,10 +10,13 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
   }).then((response) => {
     if (response.status === 202) {
       form.reset(); // Resets the form
+      // eslint-disable-next-line no-alert
       alert('Live copy created successfully!');
     } else if (response.status === 404) {
+      // eslint-disable-next-line no-alert
       alert('Error: Resource not found!');
     } else {
+      // eslint-disable-next-line no-alert
       alert('Form submission failed!');
     }
     // eslint-disable-next-line no-console
