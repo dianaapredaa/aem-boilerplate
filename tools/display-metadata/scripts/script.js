@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/extensions
+import { apiUrl } from '../../../config/config';
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('metadata-form');
   const metadataDisplay = document.getElementById('metadata-display');
@@ -8,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', function (event) {
       event.preventDefault(); // Prevents the default form submission
 
-      fetch('https://aem-sites-reverie-msm-launches-eds-deploy-ethos12-416093.stage.cloud.adobe.io/sharepoint/display-metadata', {
+      fetch(`${apiUrl}/sharepoint/display-metadata`, {
         method: 'POST',
         body: new FormData(this),
       })

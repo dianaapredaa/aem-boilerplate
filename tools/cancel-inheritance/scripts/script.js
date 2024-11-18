@@ -1,8 +1,11 @@
+// eslint-disable-next-line import/extensions
+import { apiUrl } from '../../../config/config';
+
 // eslint-disable-next-line func-names
 document.getElementById('cancel-inheritance').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('https://aem-sites-reverie-msm-launches-eds-deploy-ethos12-416093.stage.cloud.adobe.io/sharepoint/cancel-inheritance', {
+  fetch(`${apiUrl}/sharepoint/cancel-inheritance`, {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {

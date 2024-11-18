@@ -1,8 +1,10 @@
-// eslint-disable-next-line func-names
+// eslint-disable-next-line func-names,import/extensions
+import { apiUrl } from '../../../config/config';
+
 document.getElementById('rollout').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission
 
-  fetch('https://aem-sites-reverie-msm-launches-eds-deploy-ethos12-416093.stage.cloud.adobe.io/sharepoint/rollout', {
+  fetch(`${apiUrl}/sharepoint/rollout`, {
     method: 'POST',
     body: new FormData(this),
   }).then((response) => {
