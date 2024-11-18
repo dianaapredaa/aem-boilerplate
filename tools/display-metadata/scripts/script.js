@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/extensions
-import { apiUrl } from '../../../config/config';
+import { apiUrl } from '../../../config/config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('metadata-form');
