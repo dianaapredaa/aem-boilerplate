@@ -1,5 +1,5 @@
 // eslint-disable-next-line func-names,import/extensions
-import { apiUrl } from '../../../config/config';
+import { apiUrl } from '../../../config/config.js';
 
 document.getElementById('delete-live-copy').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevents the default form submission

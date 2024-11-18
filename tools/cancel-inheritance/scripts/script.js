@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/extensions
-import { apiUrl } from '../../../config/config';
+import { apiUrl } from '../../../config/config.js';
 
 // eslint-disable-next-line func-names
 document.getElementById('cancel-inheritance').addEventListener('submit', function (event) {
