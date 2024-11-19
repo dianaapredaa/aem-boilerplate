@@ -13,11 +13,10 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
   }).then((response) => {
     if (response.ok) {
       return response.json(); // Assuming the response is JSON
-    } else {
-      console.error('Error: Resource not found!', response.status, response.statusText);
-      alert('Error: Resource not found!');
-      throw new Error('Resource not found');
     }
+    console.error('Error: Resource not found!', response.status, response.statusText);
+    alert('Error: Resource not found!');
+    throw new Error('Resource not found');
   }).then((data) => {
     console.log('Success:', data);
     this.reset(); // Resets the form
