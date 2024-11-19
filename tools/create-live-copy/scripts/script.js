@@ -6,6 +6,7 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
 
   fetch(`${apiUrl}/sharepoint/create-live-copy`, {
     method: 'POST',
+    mode: 'no-cors',
     body: new FormData(this),
   }).then((response) => {
     if (response.ok) {
