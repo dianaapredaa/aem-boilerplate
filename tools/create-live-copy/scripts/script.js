@@ -9,13 +9,19 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
     body: new FormData(this),
   }).then((response) => {
     if (response.ok) {
-      this.reset(); // Resets the form
+      return response.json(); // Assuming the response is JSON
     } else {
-      // eslint-disable-next-line no-alert
+      console.error('Error: Resource not found!', response.status, response.statusText);
       alert('Error: Resource not found!');
+      throw new Error('Resource not found');
     }
-    // eslint-disable-next-line no-console
-  }).catch((error) => console.error('Error:', error));
+  }).then((data) => {
+    console.log('Success:', data);
+    this.reset(); // Resets the form
+  }).catch((error) => {
+    console.error('Fetch error:', error);
+    alert('Error: Network request failed!');
+  });
 
   // eslint-disable-next-line no-alert
   alert('Creating Live Copy!');
