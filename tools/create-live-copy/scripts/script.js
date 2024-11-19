@@ -11,6 +11,8 @@ document.getElementById('create-live-copy').addEventListener('submit', function 
     },
     body: new FormData(this),
   }).then((response) => {
+    console.log('Response status:', response.status);
+    console.log('Response headers:', response.headers);
     if (response.ok) {
       return response.json(); // Assuming the response is JSON
     }
