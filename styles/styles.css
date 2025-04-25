@@ -254,4 +254,28 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+
+/* Add contrast media query for accessibility */
+@media (prefers-contrast: more) {
+  :root {
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --link-color: #ffff00;
+    --link-hover-color: #ffd700;
+    --light-color: #ffffff;
+    --dark-color: #000000;
+  }
+}
+
+@media (prefers-contrast: less) {
+  :root {
+    --background-color: #f8f8f8;
+    --text-color: #2a2a2a;
+    --link-color: #2050e0;
+    --link-hover-color: #1840b8;
+    --light-color: #ffffff;
+    --dark-color: #404040;
+  }
+}
+
 }
