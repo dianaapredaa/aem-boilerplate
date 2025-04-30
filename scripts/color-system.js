@@ -71,6 +71,38 @@ const ColorSystem = {
       const b = Math.max(0, Math.min(255, Math.round(rgb.b * (1 + factor))));
       
       return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+    },
+
+    // Check if element needs a background overlay
+    shouldAddBackground(element) {
+      const style = window.getComputedStyle(element);
+      const bgColor = style.backgroundColor;
+      const isTransparent = bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent';
+      return isTransparent;
+    },
+
+    // Calculate if text needs enhancement based on background
+    needsTextEnhancement(element) {
+      const style = window.getComputedStyle(element);
+      const textColor = style.color;
+      const bgColor = style.backgroundColor;
+      
+      // If background is transparent or image, return true
+      if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
+        return true;
+      }
+      
+      // Calculate contrast ratio
+      const textRgb = this.hexToRgb(textColor);
+      const bgRgb = this.hexToRgb(bgColor);
+      
+      if (!textRgb || !bgRgb) return true;
+      
+      const textLuminance = this.getLuminance(textRgb.r, textRgb.g, textRgb.b);
+      const bgLuminance = this.getLuminance(bgRgb.r, bgRgb.g, bgRgb.b);
+      const contrastRatio = this.getContrastRatio(textLuminance, bgLuminance);
+      
+      return contrastRatio < 4.5;
     }
   },
 
@@ -112,6 +144,28 @@ const ColorSystem = {
     });
   },
 
+  // Handle text overlays on images
+  handleImageOverlays() {
+    // Find all elements that might have text on images
+    const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a');
+    
+    elements.forEach(element => {
+      // Check if element is positioned over an image
+      const parent = element.parentElement;
+      if (parent && parent.querySelector('img')) {
+        // Add text shadow for better visibility
+        element.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.7)';
+        
+        // Add semi-transparent background if needed
+        if (this.utils.shouldAddBackground(element)) {
+          element.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+          element.style.padding = '4px 8px';
+          element.style.borderRadius = '4px';
+        }
+      }
+    });
+  },
+
   // Initialize color system
   init() {
     const contrastMode = window.matchMedia('(prefers-contrast: more)').matches ? 'high' : 'low';
@@ -119,6 +173,7 @@ const ColorSystem = {
     if (contrastMode === 'high') {
       const highContrastColors = this.calculateHighContrastColors();
       this.applyColors(highContrastColors);
+      this.handleImageOverlays();
     }
 
     // Listen for changes in contrast preference
@@ -126,12 +181,27 @@ const ColorSystem = {
       if (e.matches) {
         const highContrastColors = this.calculateHighContrastColors();
         this.applyColors(highContrastColors);
+        this.handleImageOverlays();
       } else {
         // Reset to original theme colors
         const originalColors = this.getCurrentThemeColors();
         this.applyColors(originalColors);
+        // Remove text overlays
+        document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a').forEach(element => {
+          element.style.textShadow = '';
+          element.style.backgroundColor = '';
+          element.style.padding = '';
+          element.style.borderRadius = '';
+        });
       }
     });
+
+    // Also handle image overlays when images load
+    document.addEventListener('load', (e) => {
+      if (e.target.tagName === 'IMG') {
+        this.handleImageOverlays();
+      }
+    }, true);
   }
 };
 
