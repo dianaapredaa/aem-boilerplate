@@ -11,13 +11,13 @@
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* Default theme colors - these will be dynamically adjusted */
+  --background-color: #F8F8F8;
+  --text-color: #2A2A2A;
+  --link-color: #2050E0;
+  --link-hover-color: #1840B8;
+  --light-color: #FFFFFF;
+  --dark-color: #404040;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -259,22 +259,24 @@ main .section.highlight {
 /* Force high contrast mode for testing */
 @media (prefers-contrast: more), (forced-colors: active) {
   :root {
-    --background-color: #000000;
-    --text-color: #ffffff;
-    --link-color: #ffff00;
-    --link-hover-color: #ffd700;
-    --light-color: #333333;
-    --dark-color: #000000;
+    /* Colors will be dynamically calculated by the color system */
+    --background-color: var(--background-color);
+    --text-color: var(--text-color);
+    --link-color: var(--link-color);
+    --link-hover-color: var(--link-hover-color);
+    --light-color: var(--light-color);
+    --dark-color: var(--dark-color);
   }
 }
 
 @media (prefers-contrast: less) {
   :root {
-    --background-color: #f8f8f8;
-    --text-color: #2a2a2a;
-    --link-color: #2050e0;
-    --link-hover-color: #1840b8;
-    --light-color: #ffffff;
-    --dark-color: #404040;
+    /* Colors will be dynamically calculated by the color system */
+    --background-color: var(--background-color);
+    --text-color: var(--text-color);
+    --link-color: var(--link-color);
+    --link-hover-color: var(--link-hover-color);
+    --light-color: var(--light-color);
+    --dark-color: var(--dark-color);
   }
 }

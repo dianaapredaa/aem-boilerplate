@@ -14,8 +14,8 @@ import {
 } from './aem.js';
 
 // Import accessibility features
-// console.log('Loading accessibility features...');
-// import './accessibility.js';
+console.log('Loading accessibility features...');
+import './accessibility.js';
 
 /**
  * Builds hero block and prepends to main in a new section.
