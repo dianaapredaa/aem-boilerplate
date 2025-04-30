@@ -259,69 +259,12 @@ main .section.highlight {
 /* Force high contrast mode for testing */
 @media (prefers-contrast: more), (forced-colors: active) {
   :root {
-    --background-color: #000000 !important;
-    --text-color: #ffffff !important;
-    --link-color: #ffff00 !important;
-    --link-hover-color: #ffd700 !important;
-    --light-color: #333333 !important;
-    --dark-color: #000000 !important;
-  }
-
-  body {
-    background-color: var(--background-color) !important;
-    color: var(--text-color) !important;
-  }
-
-  /* Enhance button contrast */
-  a.button:any-link,
-  button {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-    border: 2px solid #ffffff !important;
-  }
-
-  /* Increase focus visibility */
-  a:focus,
-  button:focus {
-    outline: 3px solid #ffff00 !important;
-    outline-offset: 2px !important;
-  }
-
-  /* Force all text to high contrast */
-  p, h1, h2, h3, h4, h5, h6, span, div {
-    color: var(--text-color) !important;
-  }
-
-  /* Force all links to be highly visible */
-  a:any-link {
-    color: var(--link-color) !important;
-    text-decoration: underline !important;
-  }
-
-  /* Enhance form controls contrast */
-  input,
-  textarea,
-  select {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-    border: 2px solid #ffffff !important;
-  }
-
-  /* Ensure sufficient contrast for disabled elements */
-  button:disabled,
-  button:disabled:hover {
-    background-color: #666666 !important;
-    color: #ffffff !important;
-    border-color: #999999 !important;
-  }
-
-  /* Force background colors */
-  .section {
-    background-color: var(--background-color) !important;
-  }
-
-  .section.light {
-    background-color: var(--light-color) !important;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --link-color: #ffff00;
+    --link-hover-color: #ffd700;
+    --light-color: #333333;
+    --dark-color: #000000;
   }
 }
 
