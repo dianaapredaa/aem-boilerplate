@@ -118,68 +118,106 @@
 // Function to force high contrast mode
 function forceHighContrast() {
   console.log('Applying high contrast mode...');
-  document.documentElement.style.setProperty('--background-color', '#000000', 'important');
-  document.documentElement.style.setProperty('--text-color', '#ffffff', 'important');
-  document.documentElement.style.setProperty('--link-color', '#ffff00', 'important');
-  document.documentElement.style.setProperty('--link-hover-color', '#ffd700', 'important');
-  document.documentElement.style.setProperty('--light-color', '#333333', 'important');
-  document.documentElement.style.setProperty('--dark-color', '#000000', 'important');
-  
-  // Force body colors
-  document.body.style.backgroundColor = '#000000';
-  document.body.style.color = '#ffffff';
+  try {
+    document.documentElement.style.setProperty('--background-color', '#000000', 'important');
+    document.documentElement.style.setProperty('--text-color', '#ffffff', 'important');
+    document.documentElement.style.setProperty('--link-color', '#ffff00', 'important');
+    document.documentElement.style.setProperty('--link-hover-color', '#ffd700', 'important');
+    document.documentElement.style.setProperty('--light-color', '#333333', 'important');
+    document.documentElement.style.setProperty('--dark-color', '#000000', 'important');
+    
+    // Force body colors
+    if (document.body) {
+      document.body.style.backgroundColor = '#000000';
+      document.body.style.color = '#ffffff';
+    }
+    console.log('High contrast mode applied successfully');
+  } catch (error) {
+    console.error('Error applying high contrast mode:', error);
+  }
 }
 
 // Function to check contrast mode
 function checkContrastMode() {
-  const contrastMode = window.matchMedia('(prefers-contrast: more)').matches;
-  console.log('Contrast mode enabled:', contrastMode);
-  console.log('All media queries:', window.matchMedia.toString());
-  
-  // Log all matching media queries
-  ['more', 'less', 'no-preference', 'custom'].forEach(value => {
-    const query = `(prefers-contrast: ${value})`;
-    const matches = window.matchMedia(query).matches;
-    console.log(`${query}: ${matches}`);
-  });
+  try {
+    const contrastMode = window.matchMedia('(prefers-contrast: more)').matches;
+    console.log('Contrast mode enabled:', contrastMode);
+    
+    // Log all matching media queries
+    ['more', 'less', 'no-preference', 'custom'].forEach(value => {
+      const query = `(prefers-contrast: ${value})`;
+      const matches = window.matchMedia(query).matches;
+      console.log(`${query}: ${matches}`);
+    });
 
-  return contrastMode;
+    return contrastMode;
+  } catch (error) {
+    console.error('Error checking contrast mode:', error);
+    return false;
+  }
 }
 
 // Add test button
 function addTestButton() {
-  const button = document.createElement('button');
-  button.textContent = 'Test High Contrast';
-  button.style.position = 'fixed';
-  button.style.top = '10px';
-  button.style.right = '10px';
-  button.style.zIndex = '9999';
-  button.onclick = () => {
-    console.log('Manual test of high contrast mode');
-    forceHighContrast();
-  };
-  document.body.appendChild(button);
+  try {
+    const button = document.createElement('button');
+    button.textContent = 'Test High Contrast';
+    button.style.position = 'fixed';
+    button.style.top = '10px';
+    button.style.right = '10px';
+    button.style.zIndex = '9999';
+    button.style.backgroundColor = '#000000';
+    button.style.color = '#ffffff';
+    button.style.border = '2px solid #ffffff';
+    button.style.padding = '10px';
+    button.style.cursor = 'pointer';
+    button.onclick = () => {
+      console.log('Manual test of high contrast mode');
+      forceHighContrast();
+    };
+    document.body.appendChild(button);
+    console.log('Test button added successfully');
+  } catch (error) {
+    console.error('Error adding test button:', error);
+  }
 }
 
-// Initialize contrast adjustments
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM Content Loaded - Checking contrast mode...');
-  
+// Initialize immediately
+console.log('Initializing accessibility features...');
+
+// Check contrast mode immediately
+if (checkContrastMode()) {
+  forceHighContrast();
+}
+
+// Also run when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded - Checking contrast mode again...');
+    if (checkContrastMode()) {
+      forceHighContrast();
+    }
+    // Add test button in development
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      addTestButton();
+    }
+  });
+} else {
+  // DOM is already ready
+  console.log('DOM already loaded - Running immediately...');
+  if (checkContrastMode()) {
+    forceHighContrast();
+  }
   // Add test button in development
   if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     addTestButton();
   }
-  
-  // Check if contrast mode is enabled
-  if (checkContrastMode()) {
+}
+
+// Listen for changes in contrast preference
+window.matchMedia('(prefers-contrast: more)').addEventListener('change', (e) => {
+  console.log('Contrast preference changed:', e.matches);
+  if (e.matches) {
     forceHighContrast();
   }
-  
-  // Listen for changes in contrast preference
-  window.matchMedia('(prefers-contrast: more)').addEventListener('change', (e) => {
-    console.log('Contrast preference changed:', e.matches);
-    if (e.matches) {
-      forceHighContrast();
-    }
-  });
 }); 
