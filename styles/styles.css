@@ -254,16 +254,52 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
 
-/* Add contrast media query for accessibility  */
+/* Add contrast media query for accessibility */
 @media (prefers-contrast: more) {
   :root {
     --background-color: #000000;
     --text-color: #ffffff;
     --link-color: #ffff00;
     --link-hover-color: #ffd700;
-    --light-color: #ffffff;
+    --light-color: #333333;
     --dark-color: #000000;
+  }
+
+  /* Enhance button contrast */
+  a.button:any-link,
+  button {
+    border: 2px solid #ffffff;
+  }
+
+  /* Ensure text remains visible during webfont load */
+  body {
+    font-display: swap;
+  }
+
+  /* Increase focus visibility */
+  a:focus,
+  button:focus {
+    outline: 3px solid #ffff00;
+    outline-offset: 2px;
+  }
+
+  /* Enhance form controls contrast */
+  input,
+  textarea,
+  select {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+
+  /* Ensure sufficient contrast for disabled elements */
+  button:disabled,
+  button:disabled:hover {
+    background-color: #666666;
+    color: #ffffff;
+    border-color: #999999;
   }
 }
 
@@ -276,6 +312,4 @@ main .section.highlight {
     --light-color: #ffffff;
     --dark-color: #404040;
   }
-}
-
 }
