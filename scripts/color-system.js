@@ -126,20 +126,85 @@ const ColorSystem = {
       return colors;
     },
 
-    // Get the best text color based on image colors
+    // Enhanced contrast check
+    ensureMinimumContrast(textColor, bgLuminance) {
+      const minContrastRatio = 7; // Increased from 4.5 for better visibility
+      const textRgb = this.hexToRgb(textColor);
+      const textLuminance = this.getLuminance(textRgb.r, textRgb.g, textRgb.b);
+      const contrastRatio = this.getContrastRatio(textLuminance, bgLuminance);
+      
+      if (contrastRatio < minContrastRatio) {
+        // Force to pure white or black for maximum contrast
+        return bgLuminance > 0.5 ? '#000000' : '#FFFFFF';
+      }
+      return textColor;
+    },
+
+    // Get the best text color based on image colors with enhanced contrast
     getBestTextColor(colors) {
       let totalLuminance = 0;
       let count = 0;
+      let darkPixels = 0;
       
       for (const [color, frequency] of colors) {
         const [r, g, b] = color.match(/\d+/g).map(Number);
         const luminance = this.getLuminance(r, g, b);
         totalLuminance += luminance * frequency;
         count += frequency;
+        
+        // Consider pixels dark if luminance is below 0.6 (more aggressive)
+        if (luminance < 0.6) darkPixels += frequency;
       }
       
       const averageLuminance = totalLuminance / count;
-      return averageLuminance > 0.5 ? '#000000' : '#FFFFFF';
+      const darkRatio = darkPixels / count;
+      
+      // Force white text on darker backgrounds (more aggressive threshold)
+      if (darkRatio > 0.3 || averageLuminance < 0.6) {
+        return '#FFFFFF';
+      }
+      
+      return '#000000';
+    },
+
+    // Enhanced background overlay with stronger contrast
+    getBackgroundOverlay(textColor, imageLuminance) {
+      if (textColor === '#FFFFFF') {
+        // Darker, more opaque background for white text
+        return 'rgba(0, 0, 0, 0.85)';
+      } else {
+        // Lighter, more opaque background for black text
+        return 'rgba(255, 255, 255, 0.85)';
+      }
+    },
+
+    // Enhanced text shadow with stronger outline
+    getTextShadow(textColor) {
+      if (textColor === '#FFFFFF') {
+        // Stronger shadows for white text
+        return `
+          2px 2px 1px rgba(0, 0, 0, 1),
+          -2px -2px 1px rgba(0, 0, 0, 1),
+          2px -2px 1px rgba(0, 0, 0, 1),
+          -2px 2px 1px rgba(0, 0, 0, 1),
+          3px 3px 2px rgba(0, 0, 0, 0.9),
+          -3px -3px 2px rgba(0, 0, 0, 0.9),
+          3px -3px 2px rgba(0, 0, 0, 0.9),
+          -3px 3px 2px rgba(0, 0, 0, 0.9)
+        `.trim();
+      } else {
+        // Stronger shadows for black text
+        return `
+          2px 2px 1px rgba(255, 255, 255, 1),
+          -2px -2px 1px rgba(255, 255, 255, 1),
+          2px -2px 1px rgba(255, 255, 255, 1),
+          -2px 2px 1px rgba(255, 255, 255, 1),
+          3px 3px 2px rgba(255, 255, 255, 0.9),
+          -3px -3px 2px rgba(255, 255, 255, 0.9),
+          3px -3px 2px rgba(255, 255, 255, 0.9),
+          -3px 3px 2px rgba(255, 255, 255, 0.9)
+        `.trim();
+      }
     }
   },
 
@@ -181,59 +246,57 @@ const ColorSystem = {
     });
   },
 
-  // Handle text overlays on images
+  // Handle text overlays on images with enhanced contrast
   handleImageOverlays() {
-    // Find all elements that might have text on images
     const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a');
     
     elements.forEach(element => {
-      // Check if element is positioned over an image
       const parent = element.parentElement;
       const image = parent?.querySelector('img');
       
       if (image) {
-        // Create a canvas to analyze image colors
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         
-        // Set canvas size to match image
         canvas.width = image.width;
         canvas.height = image.height;
-        
-        // Draw image on canvas
         ctx.drawImage(image, 0, 0);
         
-        // Get the color data for the area under the text
         const elementRect = element.getBoundingClientRect();
         const imageRect = image.getBoundingClientRect();
         
-        // Calculate the relative position of the text on the image
-        const x = elementRect.left - imageRect.left;
-        const y = elementRect.top - imageRect.top;
-        const width = elementRect.width;
-        const height = elementRect.height;
+        const x = Math.max(0, elementRect.left - imageRect.left);
+        const y = Math.max(0, elementRect.top - imageRect.top);
+        const width = Math.min(elementRect.width, image.width - x);
+        const height = Math.min(elementRect.height, image.height - y);
         
-        // Get the color data for this area
+        if (width <= 0 || height <= 0) return;
+        
         const imageData = ctx.getImageData(x, y, width, height);
         const colors = this.utils.analyzeImageColors(imageData);
         
-        // Determine the best text color based on the image colors
+        // Get the best text color with enhanced contrast
         const textColor = this.utils.getBestTextColor(colors);
         
-        // Apply the contrasting color
-        element.style.color = textColor;
-        
-        // Add text shadow for better visibility
-        const shadowColor = textColor === '#FFFFFF' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.7)';
-        element.style.textShadow = `2px 2px 4px ${shadowColor}`;
-        
-        // Add semi-transparent background if needed
-        if (this.utils.shouldAddBackground(element)) {
-          const bgColor = textColor === '#FFFFFF' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)';
-          element.style.backgroundColor = bgColor;
-          element.style.padding = '4px 8px';
-          element.style.borderRadius = '4px';
+        // Calculate average luminance for the background
+        let totalLuminance = 0;
+        let count = 0;
+        for (const [color, frequency] of colors) {
+          const [r, g, b] = color.match(/\d+/g).map(Number);
+          totalLuminance += this.utils.getLuminance(r, g, b) * frequency;
+          count += frequency;
         }
+        const avgLuminance = totalLuminance / count;
+        
+        // Apply enhanced styles with stronger contrast
+        element.style.color = textColor;
+        element.style.textShadow = this.utils.getTextShadow(textColor);
+        element.style.backgroundColor = this.utils.getBackgroundOverlay(textColor, avgLuminance);
+        element.style.padding = '8px 16px'; // Increased padding
+        element.style.borderRadius = '6px'; // Increased border radius
+        element.style.display = 'inline-block';
+        element.style.fontWeight = '600'; // Make text bolder
+        element.style.letterSpacing = '0.5px'; // Improve readability
       }
     });
   },
