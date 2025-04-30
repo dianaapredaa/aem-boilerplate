@@ -1,3 +1,5 @@
+console.log('Accessibility script loaded');
+
 // // Function to calculate relative luminance
 // function getLuminance(r, g, b) {
 //   const [rs, gs, bs] = [r, g, b].map(c => {

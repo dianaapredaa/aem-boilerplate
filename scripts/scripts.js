@@ -12,6 +12,9 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+
+// Import accessibility features
+console.log('Loading accessibility features...');
 import './accessibility.js';
 
 /**
