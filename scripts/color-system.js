@@ -103,6 +103,43 @@ const ColorSystem = {
       const contrastRatio = this.getContrastRatio(textLuminance, bgLuminance);
       
       return contrastRatio < 4.5;
+    },
+
+    // Analyze image colors to determine dominant colors
+    analyzeImageColors(imageData) {
+      const colors = new Map();
+      const data = imageData.data;
+      
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const a = data[i + 3];
+        
+        if (a > 0) { // Skip transparent pixels
+          const luminance = this.getLuminance(r, g, b);
+          const color = `rgb(${r},${g},${b})`;
+          colors.set(color, (colors.get(color) || 0) + 1);
+        }
+      }
+      
+      return colors;
+    },
+
+    // Get the best text color based on image colors
+    getBestTextColor(colors) {
+      let totalLuminance = 0;
+      let count = 0;
+      
+      for (const [color, frequency] of colors) {
+        const [r, g, b] = color.match(/\d+/g).map(Number);
+        const luminance = this.getLuminance(r, g, b);
+        totalLuminance += luminance * frequency;
+        count += frequency;
+      }
+      
+      const averageLuminance = totalLuminance / count;
+      return averageLuminance > 0.5 ? '#000000' : '#FFFFFF';
     }
   },
 
@@ -152,13 +189,48 @@ const ColorSystem = {
     elements.forEach(element => {
       // Check if element is positioned over an image
       const parent = element.parentElement;
-      if (parent && parent.querySelector('img')) {
+      const image = parent?.querySelector('img');
+      
+      if (image) {
+        // Create a canvas to analyze image colors
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size to match image
+        canvas.width = image.width;
+        canvas.height = image.height;
+        
+        // Draw image on canvas
+        ctx.drawImage(image, 0, 0);
+        
+        // Get the color data for the area under the text
+        const elementRect = element.getBoundingClientRect();
+        const imageRect = image.getBoundingClientRect();
+        
+        // Calculate the relative position of the text on the image
+        const x = elementRect.left - imageRect.left;
+        const y = elementRect.top - imageRect.top;
+        const width = elementRect.width;
+        const height = elementRect.height;
+        
+        // Get the color data for this area
+        const imageData = ctx.getImageData(x, y, width, height);
+        const colors = this.utils.analyzeImageColors(imageData);
+        
+        // Determine the best text color based on the image colors
+        const textColor = this.utils.getBestTextColor(colors);
+        
+        // Apply the contrasting color
+        element.style.color = textColor;
+        
         // Add text shadow for better visibility
-        element.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.7)';
+        const shadowColor = textColor === '#FFFFFF' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.7)';
+        element.style.textShadow = `2px 2px 4px ${shadowColor}`;
         
         // Add semi-transparent background if needed
         if (this.utils.shouldAddBackground(element)) {
-          element.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+          const bgColor = textColor === '#FFFFFF' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)';
+          element.style.backgroundColor = bgColor;
           element.style.padding = '4px 8px';
           element.style.borderRadius = '4px';
         }
@@ -192,6 +264,7 @@ const ColorSystem = {
           element.style.backgroundColor = '';
           element.style.padding = '';
           element.style.borderRadius = '';
+          element.style.color = '';
         });
       }
     });
