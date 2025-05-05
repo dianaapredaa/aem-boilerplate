@@ -259,24 +259,11 @@ main .section.highlight {
 /* Force high contrast mode for testing */
 @media (prefers-contrast: more), (forced-colors: active) {
   :root {
-    /* Colors will be dynamically calculated by the color system */
-    --background-color: var(--background-color);
-    --text-color: var(--text-color);
-    --link-color: var(--link-color);
-    --link-hover-color: var(--link-hover-color);
-    --light-color: var(--light-color);
-    --dark-color: var(--dark-color);
-  }
-}
-
-@media (prefers-contrast: less) {
-  :root {
-    /* Colors will be dynamically calculated by the color system */
-    --background-color: var(--background-color);
-    --text-color: var(--text-color);
-    --link-color: var(--link-color);
-    --link-hover-color: var(--link-hover-color);
-    --light-color: var(--light-color);
-    --dark-color: var(--dark-color);
+    --background-color: #000000 !important;
+    --text-color: #ffffff !important;
+    --link-color: #ffff00 !important;
+    --link-hover-color: #ffd700 !important;
+    --light-color: #333333 !important;
+    --dark-color: #000000 !important;
   }
 }
