@@ -10,14 +10,14 @@
  * governing permissions and limitations under the License.
  */
 
-:root {
-  /* Default theme colors - these will be dynamically adjusted */
-  --background-color: #F8F8F8;
-  --text-color: #2A2A2A;
-  --link-color: #2050E0;
-  --link-hover-color: #1840B8;
-  --light-color: #FFFFFF;
-  --dark-color: #404040;
+ :root {
+  /* colors */
+  --background-color: white;
+  --light-color: #f8f8f8;
+  --dark-color: #505050;
+  --text-color: #131313;
+  --link-color: #3b63fb;
+  --link-hover-color: #1d3ecf;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -256,14 +256,60 @@ main .section.highlight {
   padding: 40px 0;
 }
 
-/* Force high contrast mode for testing */
-@media (prefers-contrast: more), (forced-colors: active) {
+/* Add contrast media query for accessibility */
+@media (prefers-contrast: more) {
   :root {
-    --background-color: #000000 !important;
-    --text-color: #ffffff !important;
-    --link-color: #ffff00 !important;
-    --link-hover-color: #ffd700 !important;
-    --light-color: #333333 !important;
-    --dark-color: #000000 !important;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --link-color: #ffff00;
+    --link-hover-color: #ffd700;
+    --light-color: #333333;
+    --dark-color: #000000;
+  }
+
+  /* Enhance button contrast */
+  a.button:any-link,
+  button {
+    border: 2px solid #ffffff;
+  }
+
+  /* Ensure text remains visible during webfont load */
+  body {
+    font-display: swap;
+  }
+
+  /* Increase focus visibility */
+  a:focus,
+  button:focus {
+    outline: 3px solid #ffff00;
+    outline-offset: 2px;
+  }
+
+  /* Enhance form controls contrast */
+  input,
+  textarea,
+  select {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+
+  /* Ensure sufficient contrast for disabled elements */
+  button:disabled,
+  button:disabled:hover {
+    background-color: #666666;
+    color: #ffffff;
+    border-color: #999999;
+  }
+}
+
+@media (prefers-contrast: less) {
+  :root {
+    --background-color: #f8f8f8;
+    --text-color: #2a2a2a;
+    --link-color: #2050e0;
+    --link-hover-color: #1840b8;
+    --light-color: #ffffff;
+    --dark-color: #404040;
   }
 }
