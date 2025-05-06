@@ -1,6 +1,6 @@
 {
   "project": "Edge Delivery Services",
-  "plugins": /*[
+  "plugins": [ /*
     {
       "id": "MSM",
       "title": "MSM",
