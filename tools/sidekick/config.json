@@ -1,6 +1,6 @@
 {
   "project": "Edge Delivery Services",
-  "plugins": [
+  "plugins": /*[
     {
       "id": "MSM",
       "title": "MSM",
@@ -139,6 +139,6 @@
       "passConfig": true,
       "passReferer": true,
       "paletteRect": "top: 50px; bottom: 10px; right: 10px; left: auto; width:800px; height: calc(100vh - 60px)"
-    }
+    } */
   ]
 }
