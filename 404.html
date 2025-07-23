@@ -29,6 +29,9 @@
           btnContainer.append(backBtn);
         }
       }
+      
+      // Add accessibility issues for testing
+      add404AccessibilityIssues();
     });
   </script>
   <script nonce="aem" type="module">
@@ -50,6 +53,43 @@
     main.error .error-number text {
       font-family: monospace;
     }
+    
+    .accessibility-issues {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .issue-title {
+      color: #d32f2f;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .button-without-name {
+      background: #007cba;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    
+    .link-without-name {
+      color: #007cba;
+      text-decoration: underline;
+      margin: 5px;
+    }
+    
+    .image-without-alt {
+      width: 50px;
+      height: 50px;
+      background: #ddd;
+      display: inline-block;
+      margin: 5px;
+    }
   </style>
   <link rel="stylesheet" href="/styles/lazy-styles.css">
 </head>
@@ -65,9 +105,135 @@
       <p class="button-container">
         <a href="/" class="button secondary error-button-home">Go home</a>
       </p>
+      
+      <!-- Accessibility Issues Section -->
+      <div class="accessibility-issues">
+        <h3 class="issue-title">Accessibility Issues for Testing</h3>
+        
+        <!-- aria-hidden-focus issues -->
+        <div>
+          <h4>aria-hidden-focus Issues:</h4>
+          <button aria-hidden="true" tabindex="0" class="button-without-name">Hidden but focusable button</button>
+          <a href="#" aria-hidden="true" tabindex="0" class="link-without-name">Hidden but focusable link</a>
+        </div>
+        
+        <!-- button-name issues -->
+        <div>
+          <h4>button-name Issues:</h4>
+          <button class="button-without-name">
+            <img src="/icons/search.svg" alt="">
+          </button>
+          <button class="button-without-name">
+            <span class="icon">🔍</span>
+          </button>
+        </div>
+        
+        <!-- link-name issues -->
+        <div>
+          <h4>link-name Issues:</h4>
+          <a href="#" class="link-without-name">
+            <img src="/icons/search.svg" alt="">
+          </a>
+          <a href="#" class="link-without-name">Click here</a>
+        </div>
+        
+        <!-- aria-allowed-attr issues -->
+        <div>
+          <h4>aria-allowed-attr Issues:</h4>
+          <div aria-label="test" aria-invalid-attr="not-allowed">Element with invalid ARIA attribute</div>
+        </div>
+        
+        <!-- aria-required-attr issues -->
+        <div>
+          <h4>aria-required-attr Issues:</h4>
+          <div role="combobox">Combobox without aria-expanded</div>
+          <div role="progressbar">Progressbar without aria-valuenow</div>
+        </div>
+        
+        <!-- aria-prohibited-attr issues -->
+        <div>
+          <h4>aria-prohibited-attr Issues:</h4>
+          <div role="presentation" aria-label="presentation element with label">Presentation element with aria-label</div>
+        </div>
+        
+        <!-- aria-roles issues -->
+        <div>
+          <h4>aria-roles Issues:</h4>
+          <div role="invalid-role">Element with invalid role</div>
+        </div>
+        
+        <!-- aria-valid-attr-value issues -->
+        <div>
+          <h4>aria-valid-attr-value Issues:</h4>
+          <div aria-expanded="maybe">Element with invalid aria-expanded value</div>
+        </div>
+        
+        <!-- aria-required-parent issues -->
+        <div>
+          <h4>aria-required-parent Issues:</h4>
+          <div role="tab">Tab outside of tablist</div>
+        </div>
+        
+        <!-- select-name issues -->
+        <div>
+          <h4>select-name Issues:</h4>
+          <select>
+            <option value="">Choose an option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+          </select>
+        </div>
+        
+        <!-- Additional issues -->
+        <div>
+          <h4>Additional Issues:</h4>
+          <img src="/icons/search.svg" class="image-without-alt">
+          <input type="text" placeholder="Enter your name">
+        </div>
+      </div>
     </div>
   </main>
   <footer></footer>
+  
+  <script nonce="aem">
+    function add404AccessibilityIssues() {
+      // Add more dynamic accessibility issues
+      const issuesContainer = document.querySelector('.accessibility-issues');
+      
+      // Add elements with multiple roles
+      const multipleRoles = document.createElement('div');
+      multipleRoles.setAttribute('role', 'button');
+      multipleRoles.setAttribute('role', 'link');
+      multipleRoles.textContent = 'Element with multiple roles';
+      multipleRoles.style.margin = '10px 0';
+      issuesContainer.appendChild(multipleRoles);
+      
+      // Add elements with invalid ARIA attribute values
+      const pressed = document.createElement('div');
+      pressed.setAttribute('aria-pressed', 'sometimes');
+      pressed.textContent = 'Element with invalid aria-pressed value';
+      pressed.style.margin = '10px 0';
+      issuesContainer.appendChild(pressed);
+      
+      // Add elements missing required parent elements
+      const tabpanel = document.createElement('div');
+      tabpanel.setAttribute('role', 'tabpanel');
+      tabpanel.textContent = 'Tabpanel outside of tablist';
+      tabpanel.style.margin = '10px 0';
+      issuesContainer.appendChild(tabpanel);
+      
+      // Add select with empty aria-label
+      const select = document.createElement('select');
+      select.setAttribute('aria-label', '');
+      select.innerHTML = `
+        <option value="">Choose an option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      `;
+      select.style.margin = '10px 0';
+      issuesContainer.appendChild(select);
+    }
+  </script>
 </body>
 
 </html>
