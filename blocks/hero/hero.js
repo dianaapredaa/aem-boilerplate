@@ -64,13 +64,11 @@ function addHeroAccessibilityIssues(block) {
   // Add elements with invalid ARIA attributes
   const invalidAria = document.createElement('div');
   invalidAria.setAttribute('aria-invalid-attr', 'not-allowed');
-  invalidAria.textContent = 'Hero element with invalid ARIA attribute';
   block.appendChild(invalidAria);
   
   // Add elements with invalid ARIA roles
   const invalidRole = document.createElement('div');
   invalidRole.setAttribute('role', 'invalid-role');
-  invalidRole.textContent = 'Hero element with invalid role';
   block.appendChild(invalidRole);
   
   // Add elements missing required ARIA attributes
@@ -78,27 +76,23 @@ function addHeroAccessibilityIssues(block) {
   tablist.setAttribute('role', 'tablist');
   const tab = document.createElement('div');
   tab.setAttribute('role', 'tab');
-  tab.textContent = 'Hero tab without aria-selected';
   tablist.appendChild(tab);
   block.appendChild(tablist);
   
   // Add elements with invalid ARIA attribute values
   const checked = document.createElement('div');
   checked.setAttribute('aria-checked', 'unknown');
-  checked.textContent = 'Hero element with invalid aria-checked value';
   block.appendChild(checked);
   
   // Add elements with prohibited ARIA attributes
   const presentation = document.createElement('div');
   presentation.setAttribute('role', 'presentation');
   presentation.setAttribute('aria-label', 'presentation element with label');
-  presentation.textContent = 'Hero presentation element with aria-label';
   block.appendChild(presentation);
   
   // Add elements missing required parent elements
   const option = document.createElement('div');
   option.setAttribute('role', 'option');
-  option.textContent = 'Hero option outside of listbox';
   block.appendChild(option);
   
   // Add select without accessible name
