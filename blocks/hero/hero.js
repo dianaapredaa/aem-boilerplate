@@ -94,21 +94,9 @@ function addHeroAccessibilityIssues(block) {
   
 
   
-  // Add images without alt text
-  const image = document.createElement('div');
-  image.className = 'hero-image-no-alt';
-  image.style.width = '24px';
-  image.style.height = '24px';
-  image.style.backgroundColor = '#ddd';
-  block.appendChild(image);
+
   
 
   
-  // Add decorative images without alt=""
-  const decorativeImage = document.createElement('div');
-  decorativeImage.className = 'hero-decorative-image';
-  decorativeImage.style.width = '24px';
-  decorativeImage.style.height = '24px';
-  decorativeImage.style.backgroundColor = '#ddd';
-  block.appendChild(decorativeImage);
+
 }
