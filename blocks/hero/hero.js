@@ -41,7 +41,7 @@ export default function decorate(block) {
 function addHeroAccessibilityIssues(block) {
   // Add buttons without accessible names
   const button = document.createElement('button');
-  button.innerHTML = '<img src="/icons/search.svg" alt="">';
+  button.innerHTML = '<span class="icon">📝</span>';
   button.className = 'hero-button-no-name';
   button.setAttribute('aria-hidden', 'true');
   button.setAttribute('tabindex', '0');
@@ -50,7 +50,7 @@ function addHeroAccessibilityIssues(block) {
   // Add links without accessible names
   const link = document.createElement('a');
   link.href = '#';
-  link.innerHTML = '<img src="/icons/search.svg" alt="">';
+  link.innerHTML = '<span class="icon">📝</span>';
   link.className = 'hero-link-no-name';
   block.appendChild(link);
   
@@ -112,9 +112,11 @@ function addHeroAccessibilityIssues(block) {
   block.appendChild(select);
   
   // Add images without alt text
-  const image = document.createElement('img');
-  image.src = '/icons/search.svg';
+  const image = document.createElement('div');
   image.className = 'hero-image-no-alt';
+  image.style.width = '24px';
+  image.style.height = '24px';
+  image.style.backgroundColor = '#ddd';
   block.appendChild(image);
   
   // Add form inputs without labels
@@ -125,8 +127,10 @@ function addHeroAccessibilityIssues(block) {
   block.appendChild(input);
   
   // Add decorative images without alt=""
-  const decorativeImage = document.createElement('img');
-  decorativeImage.src = '/icons/search.svg';
+  const decorativeImage = document.createElement('div');
   decorativeImage.className = 'hero-decorative-image';
+  decorativeImage.style.width = '24px';
+  decorativeImage.style.height = '24px';
+  decorativeImage.style.backgroundColor = '#ddd';
   block.appendChild(decorativeImage);
 }
