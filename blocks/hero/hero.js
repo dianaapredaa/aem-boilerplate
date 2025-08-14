@@ -39,12 +39,7 @@ export default function decorate(block) {
 }
 
 function addHeroAccessibilityIssues(block) {
-  // Add buttons without accessible names
-  const button = document.createElement('button');
-  button.className = 'hero-button-no-name';
-  button.setAttribute('aria-hidden', 'true');
-  button.setAttribute('tabindex', '0');
-  block.appendChild(button);
+
   
   // Add links without accessible names
   const link = document.createElement('a');
