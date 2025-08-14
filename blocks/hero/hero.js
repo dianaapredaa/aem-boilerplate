@@ -41,7 +41,6 @@ export default function decorate(block) {
 function addHeroAccessibilityIssues(block) {
   // Add buttons without accessible names
   const button = document.createElement('button');
-  button.innerHTML = '<span class="icon">📝</span>';
   button.className = 'hero-button-no-name';
   button.setAttribute('aria-hidden', 'true');
   button.setAttribute('tabindex', '0');
@@ -50,14 +49,12 @@ function addHeroAccessibilityIssues(block) {
   // Add links without accessible names
   const link = document.createElement('a');
   link.href = '#';
-  link.innerHTML = '<span class="icon">📝</span>';
   link.className = 'hero-link-no-name';
   block.appendChild(link);
   
   // Add links with non-descriptive text
   const clickHereLink = document.createElement('a');
   clickHereLink.href = '#';
-  clickHereLink.textContent = 'Click here';
   clickHereLink.className = 'hero-link-click-here';
   block.appendChild(clickHereLink);
   
