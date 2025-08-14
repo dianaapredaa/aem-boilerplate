@@ -92,15 +92,7 @@ function addHeroAccessibilityIssues(block) {
   option.setAttribute('role', 'option');
   block.appendChild(option);
   
-  // Add select without accessible name
-  const select = document.createElement('select');
-  select.innerHTML = `
-    <option value=""></option>
-    <option value="1"></option>
-    <option value="2"></option>
-  `;
-  select.className = 'hero-select-no-name';
-  block.appendChild(select);
+
   
   // Add images without alt text
   const image = document.createElement('div');
@@ -110,11 +102,7 @@ function addHeroAccessibilityIssues(block) {
   image.style.backgroundColor = '#ddd';
   block.appendChild(image);
   
-  // Add form inputs without labels
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.className = 'hero-input-no-label';
-  block.appendChild(input);
+
   
   // Add decorative images without alt=""
   const decorativeImage = document.createElement('div');
