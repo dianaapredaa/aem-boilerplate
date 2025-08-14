@@ -95,9 +95,9 @@ function addHeroAccessibilityIssues(block) {
   // Add select without accessible name
   const select = document.createElement('select');
   select.innerHTML = `
-    <option value="">Choose an option</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
+    <option value=""></option>
+    <option value="1"></option>
+    <option value="2"></option>
   `;
   select.className = 'hero-select-no-name';
   block.appendChild(select);
@@ -113,7 +113,6 @@ function addHeroAccessibilityIssues(block) {
   // Add form inputs without labels
   const input = document.createElement('input');
   input.type = 'text';
-  input.placeholder = 'Enter your name';
   input.className = 'hero-input-no-label';
   block.appendChild(input);
   
