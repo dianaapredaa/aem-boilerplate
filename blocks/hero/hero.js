@@ -41,17 +41,9 @@ export default function decorate(block) {
 function addHeroAccessibilityIssues(block) {
 
   
-  // Add links without accessible names
-  const link = document.createElement('a');
-  link.href = '#';
-  link.className = 'hero-link-no-name';
-  block.appendChild(link);
+
   
-  // Add links with non-descriptive text
-  const clickHereLink = document.createElement('a');
-  clickHereLink.href = '#';
-  clickHereLink.className = 'hero-link-click-here';
-  block.appendChild(clickHereLink);
+
   
   // Add elements with invalid ARIA attributes
   const invalidAria = document.createElement('div');
