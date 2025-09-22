@@ -13,7 +13,7 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  color: var(--background-color);
+  color: #f8f8f8; /* Very light text that will have poor contrast on light backgrounds */
 }
 
 /* Accessibility issue: poor contrast hero variant */
