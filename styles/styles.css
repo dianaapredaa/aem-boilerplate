@@ -258,22 +258,38 @@ main .section.highlight {
 
 /* Color contrast accessibility issue - intentionally poor contrast */
 .contrast-issue {
-  background-color: #f0f0f0; /* Very light gray background */
-  color: #d0d0d0; /* Very light gray text - poor contrast ratio */
+  background-color: #ffffff; /* Pure white background */
+  color: #f5f5f5; /* Almost white text - extremely poor contrast */
   padding: 20px;
   margin: 20px 0;
+  border: 1px solid #eee;
 }
 
 .contrast-issue h2 {
-  color: #e8e8e8; /* Even lighter text for headings */
+  color: #f8f8f8; /* Nearly white headings - almost invisible */
 }
 
 .contrast-issue a {
-  color: #c8c8c8; /* Light gray links that are hard to see */
+  color: #f0f0f0; /* Nearly white links */
 }
 
 .contrast-issue .button {
-  background-color: #f5f5f5; /* Almost white button */
-  color: #e0e0e0; /* Very light text */
-  border: 1px solid #f8f8f8; /* Nearly invisible border */
+  background-color: #fefefe; /* Almost pure white button */
+  color: #f9f9f9; /* Nearly white text */
+  border: 1px solid #fdfdfd; /* Invisible border */
+}
+
+/* Additional severe contrast issues */
+.severe-contrast {
+  background-color: #ffff00; /* Bright yellow background */
+  color: #ffffff; /* White text on yellow - poor contrast */
+  padding: 15px;
+  margin: 10px 0;
+}
+
+.red-contrast {
+  background-color: #ff0000; /* Red background */
+  color: #ff6666; /* Light red text on red background */
+  padding: 15px;
+  margin: 10px 0;
 }

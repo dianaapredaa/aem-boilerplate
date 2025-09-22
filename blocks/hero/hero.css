@@ -16,6 +16,15 @@
   color: var(--background-color);
 }
 
+/* Accessibility issue: poor contrast hero variant */
+.hero.contrast-issue h1 {
+  color: #f0f0f0; /* Very light text that may not contrast well with light backgrounds */
+}
+
+.hero.contrast-issue {
+  background-color: #ffffff; /* Force white background */
+}
+
 .hero picture {
   position: absolute;
   z-index: -1;
