@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Contrast Issue Demo</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="appear">
+    <main>
+        <div class="section">
+            <div>
+                <h1>Color Contrast Accessibility Test</h1>
+                <p>This page demonstrates good and poor color contrast for accessibility testing.</p>
+                
+                <h2>Good Contrast (Normal Content)</h2>
+                <p>This text has good contrast and should be easily readable. The text color is #131313 on a white background, providing excellent readability.</p>
+                <a href="#" class="button">Normal Button</a>
+                
+                <div class="contrast-issue">
+                    <h2>Poor Contrast Issue</h2>
+                    <p>This text has very poor contrast and will be difficult to read. The light gray text (#d0d0d0) on a light gray background (#f0f0f0) creates a contrast ratio that fails WCAG accessibility guidelines.</p>
+                    <p>Users with visual impairments, color blindness, or those viewing in bright sunlight will have significant difficulty reading this content.</p>
+                    <a href="#" class="button">Hard to See Button</a>
+                    <p><a href="#">This link is also hard to see</a> due to poor contrast.</p>
+                </div>
+                
+                <h2>Instructions for Testing</h2>
+                <p>Use accessibility tools like:</p>
+                <ul>
+                    <li>Browser DevTools Accessibility panel</li>
+                    <li>WAVE Web Accessibility Evaluator</li>
+                    <li>axe DevTools extension</li>
+                    <li>Lighthouse accessibility audit</li>
+                </ul>
+                <p>These tools should flag the content in the gray box above as having insufficient color contrast.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

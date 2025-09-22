@@ -255,3 +255,25 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* Color contrast accessibility issue - intentionally poor contrast */
+.contrast-issue {
+  background-color: #f0f0f0; /* Very light gray background */
+  color: #d0d0d0; /* Very light gray text - poor contrast ratio */
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.contrast-issue h2 {
+  color: #e8e8e8; /* Even lighter text for headings */
+}
+
+.contrast-issue a {
+  color: #c8c8c8; /* Light gray links that are hard to see */
+}
+
+.contrast-issue .button {
+  background-color: #f5f5f5; /* Almost white button */
+  color: #e0e0e0; /* Very light text */
+  border: 1px solid #f8f8f8; /* Nearly invisible border */
+}
